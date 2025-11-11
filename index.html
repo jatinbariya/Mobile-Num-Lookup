@@ -166,6 +166,8 @@
       <h3 id="dataAddress"></h3>
       <h3 id="dataAlt"></h3>
       <h3 id="dataId"></h3>
+      <h3 id="dataNumber"></h3>
+      <h3 id="dataCircle"></h3>
     </div>
 
     <!-- Navigation section with record indicator -->
@@ -200,6 +202,8 @@
       document.getElementById('dataAddress').textContent = 'Address: ' + (data.address || 'N/A');
       document.getElementById('dataAlt').textContent = 'Alternate Number: ' + (data.alt || 'N/A');
       document.getElementById('dataId').textContent = 'ID Number: ' + (data.id || 'N/A');
+      document.getElementById('dataNumber').textContent = 'ðŸ“ž : ' + (data.mobile || 'N/A');
+      document.getElementById('dataCircle').textContent = 'State: ' + (data.circle || 'N/A');
 
       document.getElementById('prevBtn').disabled = index === 0;
       document.getElementById('nextBtn').disabled = index === allData.length - 1;
@@ -248,3 +252,4 @@
   </script>
 </body>
 </html>
+  
