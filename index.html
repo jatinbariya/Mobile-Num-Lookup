@@ -1,255 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobile No Lookup</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile No Lookup</title>
+    <style>
+      /* Reset and base styling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
 
-  <style>
-    /* Reset and base styling */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(-45deg, #dbeafe, #ede9fe, #e0f2fe, #f3e8ff);
+        background-size: 400% 400%;
+        animation: gradientMove 12s ease infinite;
+        overflow: hidden;
+      }
 
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(-45deg, #dbeafe, #ede9fe, #e0f2fe, #f3e8ff);
-      background-size: 400% 400%;
-      animation: gradientMove 12s ease infinite;
-      overflow: hidden;
-    }
+      @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .container {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 40px 45px;
-      text-align: center;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-      width: 350px;
-      opacity: 0;
-      animation: fadeIn 1.2s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    h2 {
-      margin-bottom: 18px;
-      font-size: 1.5rem;
-      color: #1e3a8a;
-      letter-spacing: 0.5px;
-    }
-
-    .input input {
-      width: 100%;
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 1.5px solid #c7d2fe;
-      outline: none;
-      text-align: center;
-      background-color: #f9fafb;
-      transition: all 0.3s ease;
-      color: #111827;
-    }
-
-    .input input:focus {
-      background-color: #fff;
-      border-color: #818cf8;
-      box-shadow: 0 0 8px rgba(99, 102, 241, 0.3);
-    }
-
-    button {
-      padding: 12px 30px;
-      font-size: 1rem;
-      font-weight: 500;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      /* background: linear-gradient(90deg, #818cf8, #6366f1); */
-      background: linear-gradient(90deg, #d281f8, #ec63f1);
-      color: #fff;
-      transition: all 0.3s ease;
-    }
-
-    button:hover:not(:disabled) {
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(99, 102, 241, 0.4);
-      /* background: linear-gradient(90deg, #6366f1, #818cf8); */
-      background: linear-gradient(90deg, #ec63f1, #d281f8);
-    }
-
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-
-    .data {
-      margin-top: 25px;
-      text-align: left;
-      color: #374151;
-    }
-
-    .data h3 {
-      font-size: 0.95rem;
-      margin-bottom: 8px;
-      background: #f3f4f6;
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: opacity 0.3s ease;
-    }
-
-    .nav-section {
-      margin-top: 15px;
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .nav-buttons button {
-      width: 45%;
-      padding: 10px;
-    }
-
-    .record-indicator {
-      font-weight: 600;
-      color: #4f46e5;
-      font-size: 0.95rem;
-      letter-spacing: 1px;
-      background: #eef2ff;
-      padding: 5px 12px;
-      border-radius: 6px;
-      min-width: 60px;
-      text-align: center;
-    }
-
-    @media (max-width: 480px) {
       .container {
-        width: 85%;
-        padding: 30px 25px;
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 40px 45px;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        width: 350px;
+        opacity: 0;
+        animation: fadeIn 1.2s ease forwards;
       }
+
+      @keyframes fadeIn {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+
+      h2 {
+        margin-bottom: 18px;
+        font-size: 1.5rem;
+        color: #1e3a8a;
+        letter-spacing: 0.5px;
+      }
+
+      .input input {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 1.5px solid #c7d2fe;
+        outline: none;
+        text-align: center;
+        background-color: #f9fafb;
+        transition: all 0.3s ease;
+        color: #111827;
+      }
+
+      .input input:focus {
+        background-color: #fff;
+        border-color: #818cf8;
+        box-shadow: 0 0 8px rgba(99, 102, 241, 0.3);
+      }
+
+      button {
+        padding: 12px 30px;
+        font-size: 1rem;
+        font-weight: 500;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        /* background: linear-gradient(90deg, #818cf8, #6366f1); */
+        background: linear-gradient(90deg, #d281f8, #ec63f1);
+        color: #fff;
+        transition: all 0.3s ease;
+      }
+
+      button:hover:not(:disabled) {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(99, 102, 241, 0.4);
+        /* background: linear-gradient(90deg, #6366f1, #818cf8); */
+        background: linear-gradient(90deg, #ec63f1, #d281f8);
+      }
+
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .data {
+        margin-top: 25px;
+        text-align: left;
+        color: #374151;
+      }
+
+      .data h3 {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        background: #f3f4f6;
+        padding: 6px 10px;
+        border-radius: 6px;
+        transition: opacity 0.3s ease;
+      }
+
+      .nav-section {
+        margin-top: 15px;
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
       .nav-buttons button {
-        width: 48%;
+        width: 45%;
+        padding: 10px;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div class="container">
-    <h2>Enter Mobile No</h2>
-    <div class="input">
-      <input id="Mob" type="number" placeholder="e.g. 9876543210" />
+      .record-indicator {
+        font-weight: 600;
+        color: #4f46e5;
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        background: #eef2ff;
+        padding: 5px 12px;
+        border-radius: 6px;
+        min-width: 60px;
+        text-align: center;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          width: 85%;
+          padding: 30px 25px;
+        }
+        .nav-buttons button {
+          width: 48%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Enter Mobile No</h2>
+      <div class="input">
+        <input id="Mob" type="number" placeholder="e.g. 9876543210">
+      </div>
+      <button style="margin-top: 20px;" onclick="submit()">Get Data</button>
+
+      <div class="data">
+        <h3 id="dataName"></h3>
+        <h3 id="dataFather"></h3>
+        <h3 id="dataAddress"></h3>
+        <h3 id="dataAlt"></h3>
+        <h3 id="dataId"></h3>
+        <h3 id="dataNumber"></h3>
+        <h3 id="dataCircle"></h3>
+      </div>
+
+      <!-- Navigation section with record indicator -->
+      <div class="nav-section">
+        <button id="prevBtn" onclick="showPrev()">←</button>
+        <span class="record-indicator" id="recordIndicator">01/01</span>
+        <button id="nextBtn" onclick="showNext()">→</button>
+      </div>
     </div>
-    <button style="margin-top: 20px;" onclick="submit()">Get Data</button>
 
-    <div class="data">
-      <h3 id="dataName"></h3>
-      <h3 id="dataFather"></h3>
-      <h3 id="dataAddress"></h3>
-      <h3 id="dataAlt"></h3>
-      <h3 id="dataId"></h3>
-      <h3 id="dataNumber"></h3>
-      <h3 id="dataCircle"></h3>
-    </div>
+    <script>
+      let allData = [];
+      let currentIndex = 0;
 
-    <!-- Navigation section with record indicator -->
-    <div class="nav-section">
-      <button id="prevBtn" onclick="showPrev()">←</button>
-      <span class="record-indicator" id="recordIndicator">01/01</span>
-      <button id="nextBtn" onclick="showNext()">→</button>
-    </div>
-  </div>
-
-  <script>
-    let allData = [];
-    let currentIndex = 0;
-
-    function updateRecordIndicator() {
-      const indicator = document.getElementById("recordIndicator");
-      if (allData.length > 0) {
-        const current = String(currentIndex + 1).padStart(2, '0');
-        const total = String(allData.length).padStart(2, '0');
-        indicator.textContent = `${current}/${total}`;
-      } else {
-        indicator.textContent = "";
+      function updateRecordIndicator() {
+        const indicator = document.getElementById("recordIndicator");
+        if (allData.length > 0) {
+          const current = String(currentIndex + 1).padStart(2, '0');
+          const total = String(allData.length).padStart(2, '0');
+          indicator.textContent = `${current}/${total}`;
+        } else {
+          indicator.textContent = "";
+        }
       }
-    }
 
-    function renderData(index) {
-      const data = allData[index];
-      if (!data) return;
+      function renderData(index) {
+        const data = allData[index];
+        if (!data) return;
+      
+        document.getElementById('dataName').textContent = 'Name: ' + (data.name || 'N/A');
+        document.getElementById('dataFather').textContent = "Father's Name: " + (data.fname || 'N/A');
+        document.getElementById('dataAddress').textContent = 'Address: ' + (data.address || 'N/A');
+        document.getElementById('dataAlt').textContent = 'Alternate Number: ' + (data.alt || 'N/A');
+        document.getElementById('dataId').textContent = 'ID Number: ' + (data.id || 'N/A');
+        document.getElementById('dataNumber').textContent = 'Phone Number : ' + (data.mobile || 'N/A');
+        document.getElementById('dataCircle').textContent = 'State: ' + (data.circle || 'N/A');
 
-      document.getElementById('dataName').textContent = 'Name: ' + (data.name || 'N/A');
-      document.getElementById('dataFather').textContent = "Father's Name: " + (data.fname || 'N/A');
-      document.getElementById('dataAddress').textContent = 'Address: ' + (data.address || 'N/A');
-      document.getElementById('dataAlt').textContent = 'Alternate Number: ' + (data.alt || 'N/A');
-      document.getElementById('dataId').textContent = 'ID Number: ' + (data.id || 'N/A');
-      document.getElementById('dataNumber').textContent = 'ðŸ“ž : ' + (data.mobile || 'N/A');
-      document.getElementById('dataCircle').textContent = 'State: ' + (data.circle || 'N/A');
-
-      document.getElementById('prevBtn').disabled = index === 0;
-      document.getElementById('nextBtn').disabled = index === allData.length - 1;
-      updateRecordIndicator();
-    }
-
-    function showPrev() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        renderData(currentIndex);
+        document.getElementById('prevBtn').disabled = index === 0;
+        document.getElementById('nextBtn').disabled = index === allData.length - 1;
+        updateRecordIndicator();
       }
-    }
 
-    function showNext() {
-      if (currentIndex < allData.length - 1) {
-        currentIndex++;
-        renderData(currentIndex);
+      function showPrev() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          renderData(currentIndex);
+        }
       }
-    }
 
-    function submit() {
-      let num = document.querySelector('#Mob').value.trim();
-      let url = 'https://api.lookupinfo.in/number5.php?number=' + num;
-
-      if (num !== "") {
-        fetch(url)
-          .then(res => res.json())
-          .then(database => {
-            allData = database.data || [];
-            currentIndex = 0;
-
-            if (allData.length > 0) {
-              renderData(currentIndex);
-              const nav = document.querySelector('.nav-section');
-              nav.style.display = allData.length > 1 ? 'flex' : 'none';
-            } else {
-              document.querySelector('.data').innerHTML = '<h3>No Data Found</h3>';
-              document.querySelector('.nav-section').style.display = 'none';
-            }
-          })
-          .catch(err => console.error(err));
-      } else {
-        alert('Please enter a mobile number.');
+      function showNext() {
+        if (currentIndex < allData.length - 1) {
+          currentIndex++;
+          renderData(currentIndex);
+        }
       }
-    }
-  </script>
-</body>
+
+      function submit() {
+        let num = document.querySelector('#Mob').value.trim();
+        let url = 'https://api.lookupinfo.in/number5.php?number=' + num;
+
+        if (num !== "") {
+          fetch(url)
+            .then(res => res.json())
+            .then(database => {
+              if(database==null){
+                document.querySelector('#dataName').innerHTML = '<h3>No Data Found</h3>';
+                document.querySelector('#dataName').style = 'text-align: center';
+                document.querySelector('.nav-section').style.display = 'none';
+
+                let el = ['#dataFather','#dataAddress','#dataAlt','#dataId','#dataNumber','#dataCircle'];
+                for(let i=0; i<el.length; i++){
+                  document.querySelector(el[i]).textContent = '';
+                }
+              }
+              else{
+                allData = database.data || [];
+                currentIndex = 0;
+                renderData(currentIndex);
+                const nav = document.querySelector('.nav-section');
+                nav.style.display = allData.length > 1 ? 'flex' : 'none';
+                document.querySelector('#dataName').style = 'text-align: left';
+              }
+              
+            } )
+            .catch(err => console.error(err));
+        } else {
+          alert('Please enter a mobile number.');
+        }
+      }
+    </script>
+  </body>
 </html>
-  
